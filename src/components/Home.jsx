@@ -1,23 +1,40 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import Restaurants from './Restaurants'
+
 
 function Home() {
+/*
+  const[restuarant,setRestaurant] = useState({
+      name : "japan sushi",
+    location:"Bangalore",
+    photograph:"https://img.freepik.com/free-photo/restaurant-interior_1127-3394.jpg",
+    description:"this is the restuarant in town"
+  
+  });
+  */
+  const[menu,setMenu]=useState(5);
+ 
+
+  const restuarant =
+  {
+    name : "japan sushi",
+    location:"Bangalore",
+    photograph:"https://img.freepik.com/free-photo/restaurant-interior_1127-3394.jpg",
+    description:"this is the restuarant in town"
+  }
+
+  const menuIncrement = ()=>{
+    setMenu(menu+1)
+  }
+  const menuDecrement = ()=>{
+    setMenu(menu-1)
+  }
   return (
     <Container>
         <Row>
             <Col className='py-3' md={3}>
-            <Card >
-      <Card.Img variant="top" src="https://img.freepik.com/free-photo/restaurant-interior_1127-3394.jpg" />
-      <Card.Body>
-        <Card.Title>T&Co</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button as={Link} to='/details/1' variant="dark">More Details</Button>
-      </Card.Body>
-    </Card>
+            <Restaurants details = {restuarant} id={1} />
             </Col>
 
             <Col className='py-3' md={3}>
@@ -30,6 +47,10 @@ function Home() {
           bulk of the card's content.
         </Card.Text>
         <Button variant="dark">More Details</Button>
+        <br />
+
+        <Button className='ms-1 mt-1' variant="dark" onClick={menuIncrement}>Menu +</Button> {menu}
+        <Button className='ms-1 mt-1' variant="dark" onClick={menuDecrement}>Menu -</Button> 
       </Card.Body>
     </Card>
             </Col>
