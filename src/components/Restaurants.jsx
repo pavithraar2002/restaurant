@@ -1,18 +1,18 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom'
-function Restaurants({details,id}) {
+function Restaurants({restuarant,id}) {
   
 
   return (
     <Card >
-    <Card.Img variant="top" src={details.photograph} />
+    <Card.Img variant="top" src={restuarant.photograph} />
     <Card.Body>
-      <Card.Title>{details.name}</Card.Title>
+      <Card.Title>{restuarant.name}</Card.Title>
       <Card.Text>
-       {details.description}
+       {restuarant.address}
       </Card.Text>
-      <Button as={Link} to={`/details/${id}`} variant="dark">More Details</Button>
+      <Button as={Link} to={`/details/${restuarant.id}`} variant="dark">More Details</Button>
     </Card.Body>
          </Card>
   );

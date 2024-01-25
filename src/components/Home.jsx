@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 import Restaurants from './Restaurants'
 
@@ -14,15 +14,23 @@ function Home() {
   });
   */
   const[menu,setMenu]=useState(5);
- 
+  const[restaurants,setRestaurants]=useState([]);
 
-  const restuarant =
-  {
-    name : "japan sushi",
-    location:"Bangalore",
-    photograph:"https://img.freepik.com/free-photo/restaurant-interior_1127-3394.jpg",
-    description:"this is the restuarant in town"
-  }
+
+  useEffect(()=>{
+                  //mount
+                  fetch('./restaurants.json')
+                  .then((res)=>res.json())
+                  .then((data) => setRestaurants(data.restaurants))
+  } , []) //dep4ndancy array
+
+  // const restuarant =
+  // {
+  //   name : "japan sushi",
+  //   location:"Bangalore",
+  //   photograph:"https://img.freepik.com/free-photo/restaurant-interior_1127-3394.jpg",
+  //   description:"this is the restuarant in town"
+  // }
 
   const menuIncrement = ()=>{
     setMenu(menu+1)
@@ -33,9 +41,15 @@ function Home() {
   return (
     <Container>
         <Row>
-            <Col className='py-3' md={3}>
-            <Restaurants details = {restuarant} id={1} />
+
+        {restaurants && (
+          restaurants.map((restuarant,index) => (
+            <Col className='py-3' md={3} key={index}>
+            <Restaurants restuarant = {restuarant}  />
             </Col>
+          ))
+        )}
+           
 
             <Col className='py-3' md={3}>
             <Card >
