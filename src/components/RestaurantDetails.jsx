@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import {  Card, Col, Container, ListGroup, Row } from 'react-bootstrap'
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 
 function RestaurantDetails() {
-  const[restaurants,setRestaurants]=useState([]);
+  const restaurants = useSelector((state)=>state.restaurants.data);
 
   const {id} = useParams();
-useEffect(()=>{
-  fetch('/restaurants.json')
-  .then((res)=>res.json())
-  .then((data) => setRestaurants(data.restaurants))
 
-},[]);
+  
   const restaurant = restaurants.find((rest) => rest.id == id);
   console.log(restaurant);
   
