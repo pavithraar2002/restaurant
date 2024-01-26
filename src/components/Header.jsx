@@ -14,7 +14,7 @@ function Header() {
             <Nav.Link as ={Link} to="/">Home</Nav.Link>
             <Nav.Link as ={Link} to="/About">About</Nav.Link>
             <Nav.Link as ={Link} to="/Contact">Contact</Nav.Link>
-            
+            <Nav.Link as ={Link} to="/add">Add</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

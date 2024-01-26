@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import {BrowserRouter as Router,Routes,Route  } from "react-router-dom";
 import RestaurantDetails from "./components/RestaurantDetails";
+import AddRestaurant from "./components/AddRestaurant";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Route  path="/About" element = {<About/>}/>
       <Route  path="/Contact" element = {<Contact/>}/>
       <Route  path="/details/:id" element = {<RestaurantDetails/>}/>
+      <Route  path="/add" element = {<AddRestaurant/>}/>
     </Routes>
     <Footer/>
     </Router>
